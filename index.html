@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Другофильтр</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500&amp;subset=cyrillic"
+          rel="stylesheet">
+</head>
+
+<body>
+<div id="app">
+    <div class="container">
+        <div class="logo"><img src="./images/logo.png" alt=""></div>
+        <div class="btnWrapper">
+            <button id='buttonOpen' class="btn btn--main">Открыть Другофильтр
+            </button>
+        </div>
+    </div>
+    <div id="modalFilter" class="modal">
+        <div class="overlay"></div>
+        <div class="modalCointainer">
+            <div class="modalClose"></div>
+            <div class="modalHeading">Выберите друзей</div>
+            <div class="modalFilter">
+                <div class="filterBlock filterBlock--withIcon">
+                    <input type="text" class="filterBlockInput"
+                           placeholder="Начните вводить имя друга">
+                </div>
+                <div class="filterBlock">
+                    <input type="text" class="filterBlockInput"
+                           placeholder="Название">
+                </div>
+            </div>
+
+            <div class="modalLists">
+                <div class="modalListsCol">
+                    <div class="friendsCont">
+                        <div class="friendsContHeading">Ваши друзья</div>
+                        <div class="friendsContList">
+                            <div class="friend">
+                                <div class="friendImg">
+                                    <img src="./images/friend.png" alt="">
+                                </div>
+                                <div class="friendName">Artem Barabanov</div>
+                                <div class="friendAddBtn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modalListsCol">
+                    <div class="friendsCont">
+                        <div class="friendsContHeading">Друзья в списке</div>
+                        <div class="friendsContList">
+                            <div class="friend">
+                                <div class="friendImg">
+                                    <img src="./images/friend.png" alt="">
+                                </div>
+                                <div class="friendName">Artem Barabanov</div>
+                                <div class="friendAddBtn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modalBottom">
+                <button class="btn btn--modalSave">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="src/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, button {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 85px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 50px;
+}
+
+.btnWrapper {
+    justify-content: center
+}
+
+
+.btn {
+    display: inline-flex;
+    border: none;
+    outline: none;
+    background-color: #ff9a61;
+    font-size: 16px;
+    padding: 0.3em 0.8em;
+    border-radius: 1em;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.btn--main {
+    font-size: 18px;
+    padding: 0.8em 1.2em;
+    border-radius: 2em;
+}
+
+.btn--modalSave {
+    font-size: 12px;
+    border-radius: 0.7em;
+    padding: 0.6em 1.1em;
+    margin-left: auto;
+}
+
+/* Modal  */
+
+.modal {
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: flex-start;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalCointainer {
+    margin-top: 135px;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modalClose {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3e%3cpath fill-rule='evenodd' fill='%23FFF' d='M9.828 7l2.829 2.828a2 2 0 0 1-2.829 2.829L7 9.828l-2.828 2.829a2 2 0 0 1-2.829-2.829L4.172 7 1.343 4.172a2 2 0 0 1 2.829-2.829L7 4.172l2.828-2.829a2 2 0 0 1 2.829 2.829L9.828 7z'/%3e%3c/svg%3e");
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.modalHeading {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 15px 10px;
+    border-radius: 10px 10px 0 0;
+    background-color: #ff9a61;
+}
+
+.modalFilter {
+    padding: 15px 10px;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.filterBlock {
+    flex-basis: calc(50% - 10px);
+    position: relative;
+}
+
+.filterBlock--withIcon .filterBlockInput {
+    padding-left: 27px;
+}
+
+.filterBlock--withIcon::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 14px;
+    width: 14px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='%23acacac' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72.99 72.9'%3e%3cpath d='M71.77 66l-17.9-17.9A29.94 29.94 0 1 0 30 60a29.52 29.52 0 0 0 18.1-6.1l18 17.8a4 4 0 0 0 2.9 1.2 4.18 4.18 0 0 0 2.9-1.2 4.09 4.09 0 0 0-.13-5.7zm-41.7-14.1a21.9 21.9 0 1 1 15.5-37.4A21.37 21.37 0 0 1 52 30a22 22 0 0 1-6.4 15.5 21.54 21.54 0 0 1-15.53 6.4z'/%3e%3c/svg%3e");
+}
+
+.filterBlockInput {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 6px 15px;
+    font-size: 12px;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.filterBlockInput__withIcon {
+    padding-left: 28px;
+}
+
+.modalBottom {
+    background-color: #f0f0f0;
+    padding: 15px 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 10px 10px;
+}
+
+.modalBtnSave {
+    display: inline-flex;
+    margin-left: auto;
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #ff9a61;
+    border-radius: 10px;
+}
+
+.modalLists {
+    padding: 5px 0;
+    display: flex;
+    background-color: #ffffff;
+}
+
+.modalListsCol {
+    position: relative;
+    flex-basis: 50%;
+    padding: 0 15px;
+}
+
+.modalListsCol + .modalListsCol::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: #f0f0f0;
+}
+
+.friendsContList {
+    border-top: 1px solid #f0f0f0;
+    max-height: 325px;
+    overflow: auto;
+}
+
+.friendsContHeading {
+    font-size: 12px;
+    padding-top: 7px;
+    padding-bottom: 6px;
+}
+
+.friend {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 8px 6px;
+    cursor: pointer;
+}
+
+.friend:hover, .friend:active, .friend:focus {
+    background-color: #f0f0f0;
+}
+
+.friendImg {
+    margin-right: 8px;
+}
+
+.friendName {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.friendAddBtn {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    margin-top: -8px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3e%3cpath fill-rule='evenodd' fill='%23C4C4C4' d='M14 10h-4v4a2 2 0 1 1-4 0v-4H2a2 2 0 1 1 0-4h4V2a2 2 0 1 1 4 0v4h4a2 2 0 1 1 0 4z'/%3e%3c/svg%3e");
+    width: 16px;
+    height: 16px;
+}
+
+.friendRemoveBtn {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    margin-top: -8px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3e%3cpath fill-rule='evenodd' fill='%23C4C4C4' d='M9.828 7l2.829 2.828a2 2 0 0 1-2.829 2.829L7 9.828l-2.828 2.829a2 2 0 0 1-2.829-2.829L4.172 7 1.343 4.172a2 2 0 0 1 2.829-2.829L7 4.172l2.828-2.829a2 2 0 0 1 2.829 2.829L9.828 7z'/%3e%3c/svg%3e");
+    width: 16px;
+    height: 16px;
+}
