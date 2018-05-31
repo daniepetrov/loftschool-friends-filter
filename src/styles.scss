@@ -183,7 +183,7 @@ body, button {
 
 .friendsContList {
     border-top: 1px solid #f0f0f0;
-    max-height: 325px;
+    height: 325px;
     overflow: auto;
 }
 
@@ -223,21 +223,38 @@ body, button {
 }
 
 .friendAddBtn {
+    border: none;
+    outline: none;
+    cursor: pointer;
     position: absolute;
     right: 7px;
     top: 50%;
     margin-top: -8px;
+    background-color: transparent;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3e%3cpath fill-rule='evenodd' fill='%23C4C4C4' d='M14 10h-4v4a2 2 0 1 1-4 0v-4H2a2 2 0 1 1 0-4h4V2a2 2 0 1 1 4 0v4h4a2 2 0 1 1 0 4z'/%3e%3c/svg%3e");
     width: 16px;
     height: 16px;
+    transition: all 0.2s;
+
+    &:hover {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3e%3cpath fill-rule='evenodd' fill='%23aaaaaa' d='M14 10h-4v4a2 2 0 1 1-4 0v-4H2a2 2 0 1 1 0-4h4V2a2 2 0 1 1 4 0v4h4a2 2 0 1 1 0 4z'/%3e%3c/svg%3e");
+    }
 }
 
 .friendRemoveBtn {
-    position: absolute;
-    right: 7px;
-    top: 50%;
-    margin-top: -8px;
+    @extend .friendAddBtn;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3e%3cpath fill-rule='evenodd' fill='%23C4C4C4' d='M9.828 7l2.829 2.828a2 2 0 0 1-2.829 2.829L7 9.828l-2.828 2.829a2 2 0 0 1-2.829-2.829L4.172 7 1.343 4.172a2 2 0 0 1 2.829-2.829L7 4.172l2.828-2.829a2 2 0 0 1 2.829 2.829L9.828 7z'/%3e%3c/svg%3e");
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
+
+    &:hover {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3e%3cpath fill-rule='evenodd' fill='%23aaaaaa' d='M9.828 7l2.829 2.828a2 2 0 0 1-2.829 2.829L7 9.828l-2.828 2.829a2 2 0 0 1-2.829-2.829L4.172 7 1.343 4.172a2 2 0 0 1 2.829-2.829L7 4.172l2.828-2.829a2 2 0 0 1 2.829 2.829L9.828 7z'/%3e%3c/svg%3e");
+    }
+}
+
+
+.noFriends {
+    font-size: 12px;
+    text-align: center;
+    padding: 30px 0;
 }
