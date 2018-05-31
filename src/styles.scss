@@ -74,7 +74,7 @@ body, button {
 .modalCointainer {
     margin-top: 135px;
     position: relative;
-    max-width: 600px;
+    max-width: 620px;
     width: 100%;
     border-radius: 10px;
     overflow: hidden;
@@ -207,6 +207,14 @@ body, button {
 
 .friendImg {
     margin-right: 8px;
+    width: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .friendName {

@@ -1,20 +1,30 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add parcel-plugin-handlebars
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add node-sass -D
 
 PATH: 
-  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\daniil.petrov\bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\HashiCorp\Vagrant\bin;C:\Users\daniil.petrov\AppData\Local\Microsoft\WindowsApps;C:\Users\daniil.petrov\AppData\Roaming\npm;C:\Users\daniil.petrov\AppData\Local\atom\bin;C:\Users\daniil.petrov\AppData\Local\Yarn\bin;C:\Program Files\Oracle\VirtualBox
+  C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\dapetrov0\WorkWeb\Projects\loftschool\complex-js\friends-filter\node_modules\.bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Users\dapetrov0\AppData\Local\Microsoft\WindowsApps;C:\Users\dapetrov0\AppData\Roaming\npm;C:\Users\dapetrov0\AppData\Local\atom\bin;C:\Users\dapetrov0\AppData\Local\Yarn\bin
 
 Yarn version: 
   1.6.0
 
 Node version: 
-  9.11.1
+  10.1.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\daniil.petrov\MyProjects\loftschool\complex-js\loftschool-friends-filter\node_modules\babel-traverse\node_modules\.bin'
+  Error: EPIPE: broken pipe, write
+      at Socket._write (internal/net.js:40:25)
+      at doWrite (_stream_writable.js:413:12)
+      at writeOrBuffer (_stream_writable.js:397:5)
+      at Socket.Writable.write (_stream_writable.js:295:11)
+      at Object.clearLine (readline.js:1114:12)
+      at clearLine (C:\Program Files (x86)\Yarn\lib\cli.js:50992:12)
+      at ConsoleReporter._log (C:\Program Files (x86)\Yarn\lib\cli.js:93207:43)
+      at ConsoleReporter.log (C:\Program Files (x86)\Yarn\lib\cli.js:93196:10)
+      at ConsoleReporter.step (C:\Program Files (x86)\Yarn\lib\cli.js:93117:10)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:22847:27
 
 npm manifest: 
   {

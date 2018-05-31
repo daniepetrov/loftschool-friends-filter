@@ -5,18 +5,16 @@
     <title>Другофильтр</title>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500&amp;subset=cyrillic"
           rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
     <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
 </head>
 
 <body>
 <div id="app">
     <div class="container">
-        <!--<div class="logo"><img src="./images/logo.png" alt=""></div>-->
+        <div class="logo"><img src="./images/logo.png" alt=""></div>
         <div class="btnWrapper">
-            <!--<button id='buttonOpen' class="btn btn&#45;&#45;main">Открыть Другофильтр-->
-            <!--</button>-->
-            <button id='buttonOpen' class="btn btn--main">Открыть
-            <button id='buttonGet' class="btn btn--main">Получить
+            <button id='buttonOpen' class="btn btn--main">Открыть Другофильтр
             </button>
         </div>
     </div>
@@ -27,42 +25,24 @@
             <div class="modalHeading">Выберите друзей</div>
             <div class="modalFilter">
                 <div class="filterBlock filterBlock--withIcon">
-                    <input type="text" class="filterBlockInput"
+                    <input id="filterInput1" type="text" class="filterBlockInput"
                            placeholder="Начните вводить имя друга">
                 </div>
                 <div class="filterBlock">
-                    <input type="text" class="filterBlockInput"
+                    <input id="filterInput2" type="text" class="filterBlockInput"
                            placeholder="Название">
                 </div>
             </div>
 
             <div class="modalLists">
                 <div class="modalListsCol">
-                    <div class="friendsCont">
-                        <div class="friendsContHeading">Ваши друзья</div>
-                        <div class="friendsContList">
-                            <div class="friend">
-                                <div class="friendImg">
-                                    <img src="./images/friend.png" alt="">
-                                </div>
-                                <div class="friendName">Artem Barabanov</div>
-                                <div class="friendAddBtn"></div>
-                            </div>
-                        </div>
+                    <div class="friendsContHeading">Ваши друзья</div>
+                    <div id="friendsList1" class="friendsContList">
                     </div>
                 </div>
                 <div class="modalListsCol">
-                    <div class="friendsCont">
-                        <div class="friendsContHeading">Друзья в списке</div>
-                        <div class="friendsContList">
-                            <div class="friend">
-                                <div class="friendImg">
-                                    <img src="./images/friend.png" alt="">
-                                </div>
-                                <div class="friendName">Artem Barabanov</div>
-                                <div class="friendAddBtn"></div>
-                            </div>
-                        </div>
+                    <div class="friendsContHeading">Друзья в списке</div>
+                    <div id="friendsList2" class="friendsContList">
                     </div>
                 </div>
             </div>
@@ -73,6 +53,18 @@
         </div>
     </div>
 </div>
+
+<script id="friends-template" type="text/x-handlebars-template">
+    {{#each items}}
+    <div class="friend">
+        <div class="friendImg">
+            <img src="{{photo_50}}" alt="">
+        </div>
+        <div class="friendName">{{first_name}} {{last_name}}</div>
+        <div class="friendAddBtn"></div>
+    </div>
+    {{/each}}
+</script>
 
 <script src="src/index.js"></script>
 </body>

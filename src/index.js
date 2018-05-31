@@ -1,35 +1,32 @@
 // imports
 import './styles.scss';
-import './model';
 
 import './showModal';
-import {buttonOpen} from './selectors';
+import {auth, callAPI} from './login';
 
-// Authorize VK
+import {friendsList1, filterInput1} from './selectors';
 
-Model.login(6491454, 2 | 8192)
+auth()
     .then(() => {
-        console.log('Вы успешно авторизовались!')
+        return callAPI('friends.get', { fields: 'photo_50' });
     })
-    .catch(e => {
-        console.error(e);
-        alert('Ошибка: ' + e.message);
+    .then(friends => {
+        const template = document.querySelector('#friends-template').textContent;
+        const render = Handlebars.compile(template);
+        const html = render(friends);
+        const results = document.querySelector('#friendsList1');
+
+        results.innerHTML = html;
     });
 
 
-// Model.getFriends({fields: 'photo_100'})
-//     .then((data) => {
-//         console.log(data)
-//     })
-//     .catch(e => {
-//         console.error(e);
-//     });
+filterInput1.addEventListener('input', () => {
 
-const friendsGet = async () => {
-    const result = await Model.getFriends({fields: 'photo_100'});
-    console.log(result);
-};
+    const {value} = filterInput1;
 
-const getBtn = document.querySelector('#buttonGet');
-
-getBtn.addEventListener('click', friendsGet());
+    for(const friendNode of friendsList1.children) {
+        if(friendNode.textContent.includes(value)) {
+            friendNode
+        }
+    }
+});
