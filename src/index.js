@@ -116,19 +116,19 @@ filterInput2.addEventListener('input', () => {
     renderFriends(filtered, friendsList2, true);
 });
 
-friendsList2.addEventListener('click', (e) => {
-    if (e.target.tagName === 'BUTTON') {
-        const nodeName = e.target.previousElementSibling.textContent;
-        let newArr = [];
-
-        for (let i = 0; i < filteredObj.length; i++) {
-            const fullName = `${filteredObj[i].first_name} ${filteredObj[i].last_name}`;
-            if (fullName === nodeName) {
-                newArr = filteredObj.filter(friend => friend !== filteredObj[i]);
-            }
-        }
-        friendsList2.innerHTML = '';
-        renderFriends(newArr, friendsList2, true);
-    }
-});
+// friendsList2.addEventListener('click', (e) => {
+//     if (e.target.tagName === 'BUTTON') {
+//         const nodeName = e.target.previousElementSibling.textContent;
+//         let newArr = [];
+//
+//         for (let i = 0; i < filteredObj.length; i++) {
+//             const fullName = `${filteredObj[i].first_name} ${filteredObj[i].last_name}`;
+//             if (fullName === nodeName) {
+//                 newArr = filteredObj.filter(friend => friend !== filteredObj[i]);
+//             }
+//         }
+//         friendsList2.innerHTML = '';
+//         renderFriends(newArr, friendsList2, true);
+//     }
+// });
 
