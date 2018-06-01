@@ -195,7 +195,8 @@ body, button {
     display: flex;
     align-items: center;
     padding: 8px 6px;
-    cursor: pointer;
+    cursor: move;
+    user-select: none;
 }
 
 .friend:hover, .friend:active, .friend:focus {
@@ -226,8 +227,12 @@ body, button {
     position: absolute;
     right: 16px;
     top: 50%;
-    margin-top: -8px;
+    box-sizing: content-box;
+    padding: 10px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
     background-color: transparent;
+    transform: translateY(-50%);
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3e%3cpath fill-rule='evenodd' fill='%23C4C4C4' d='M14 10h-4v4a2 2 0 1 1-4 0v-4H2a2 2 0 1 1 0-4h4V2a2 2 0 1 1 4 0v4h4a2 2 0 1 1 0 4z'/%3e%3c/svg%3e");
     width: 16px;
     height: 16px;

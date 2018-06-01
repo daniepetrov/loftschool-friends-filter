@@ -1,5 +1,5 @@
 VK.init({
-    apiId: 6491454
+    apiId: 6496535
 });
 
 
