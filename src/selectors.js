@@ -6,3 +6,4 @@ export const friendsList1 = document.querySelector('#friendsList1');
 export const friendsList2 = document.querySelector('#friendsList2');
 export const filterInput1 = document.querySelector('#filterInput1');
 export const filterInput2 = document.querySelector('#filterInput2');
+export const saveListsBtn = document.querySelector('#saveListsBtn');
