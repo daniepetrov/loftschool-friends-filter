@@ -15,7 +15,6 @@ import {
 
 (async () => {
     try {
-
         if (localStorage.friendsList1) {
             writeToSessionStorage('friendsList1', JSON.parse(localStorage.getItem('friendsList1')));
             writeToSessionStorage('friendsList2', JSON.parse(localStorage.getItem('friendsList2')));
@@ -28,30 +27,16 @@ import {
         }
 
         let friends = JSON.parse(sessionStorage.getItem('friendsList1'));
-        let friendsInList = JSON.parse(sessionStorage.getItem('friendsList2'));
-
-        renderFriends(friends, friendsList1);
-        renderFriends(friendsInList, friendsList2, true);
-
+        let friendsSelected = JSON.parse(sessionStorage.getItem('friendsList2'));
 
         let friendsFiltered = [];
-        let friendsInListFiltered = [];
+        let friendsSelectedFiltered = [];
+
+        renderFriends(friends, friendsList1);
+        renderFriends(friendsSelected, friendsList2, true);
 
         makeDND([friendsList1, friendsList2]);
 
-        friendsList1.addEventListener('click', (e) => {
-            if (e.target.tagName === 'BUTTON') {
-                let elem = e.target.parentNode;
-                addToList(elem);
-            }
-        });
-
-        friendsList2.addEventListener('click', (e) => {
-            if (e.target.tagName === 'BUTTON') {
-                let elem = e.target.parentNode;
-                removeFromList(elem)
-            }
-        });
 
         filterInput1.addEventListener('input', () => {
 
@@ -67,84 +52,84 @@ import {
             renderFriends(friendsFiltered, friendsList1);
         });
 
+
+        friendsList1.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                let elem = e.target.parentNode;
+
+                if(filterInput1.value === '') {
+                    addFriend(elem, friends, friendsSelected);
+                    removeFriend(elem, friends);
+                    renderFriends(friends, friendsList1);
+                    renderFriends(friendsSelected, friendsList2, true);
+                } else {
+                    addFriend(elem, friends, friendsSelected);
+                    removeFriend(elem, friends);
+                    removeFriend(elem, friendsFiltered);
+                    renderFriends(friendsFiltered, friendsList1);
+                    renderFriends(friendsSelected, friendsList2, true);
+                }
+
+            }
+        });
+
+        friendsList2.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                let elem = e.target.parentNode;
+                if(filterInput2.value === '') {
+                    addFriend(elem, friendsSelected, friends);
+                    removeFriend(elem, friendsSelected);
+                    renderFriends(friendsSelected, friendsList2, true);
+                    renderFriends(friends, friendsList1);
+                } else {
+                    addFriend(elem, friendsSelected, friends);
+                    removeFriend(elem, friendsSelected);
+                    removeFriend(elem, friendsSelectedFiltered);
+                    renderFriends(friendsSelectedFiltered, friendsList2, true);
+                    renderFriends(friends, friendsList1);
+                }
+            }
+        });
+
         filterInput2.addEventListener('input', () => {
 
             let {value} = filterInput2;
             value = value.toLowerCase();
 
-            friendsInListFiltered = friendsInList.filter(friend => {
+            friendsSelectedFiltered = friendsSelected.filter(friend => {
                 const fullName = `${friend.first_name} ${friend.last_name}`.toLowerCase();
                 return fullName.includes(value);
             });
             friendsList2.innerHTML = '';
-            renderFriends(friendsInListFiltered, friendsList2, true);
+            renderFriends(friendsSelectedFiltered, friendsList2, true);
         });
 
 
         saveListsBtn.addEventListener('click', function () {
             writeToLocalStorage('friendsList1', friends);
-            writeToLocalStorage('friendsList2', friendsInList);
+            writeToLocalStorage('friendsList2', friendsSelected);
         });
 
-        function addToList(elem) {
+        function addFriend(elem, arrayFrom, arrayTo) {
             const nodeName = elem.children[1].textContent;
-
-            if(filterInput2.value !== '') {
-
-                for (let i = 0; i < friends.length; i++) {
-                    const fullName = `${friends[i].first_name} ${friends[i].last_name}`;
-                    if (fullName === nodeName) {
-                        if (!~friendsInListFiltered.indexOf(friends[i])) {
-                            if(~nodeName.toLocaleLowerCase().indexOf(filterInput2.value.toLowerCase())) {
-                                friendsInListFiltered.push(friends[i]);
-                            } else {
-                                friendsInList.push(friends[i]);
-                            }
-                            friendsList2.innerHTML = '';
-                            renderFriends(friendsInListFiltered, friendsList2, true);
-                        }
-                    }
+            for (let i = 0; i < arrayFrom.length; i++) {
+                const fullName = `${arrayFrom[i].first_name} ${arrayFrom[i].last_name}`;
+                if (nodeName === fullName) {
+                    arrayTo.push(arrayFrom[i]);
                 }
-            } else {
-                for (let i = 0; i < friends.length; i++) {
-                    const fullName = `${friends[i].first_name} ${friends[i].last_name}`;
-                    if (fullName === nodeName) {
-                        if (!~friendsInList.indexOf(friends[i])) {
-                            friendsInList.push(friends[i]);
-                        }
-                    }
-                }
-                friendsList2.innerHTML = '';
-                renderFriends(friendsInList, friendsList2, true);
             }
         }
-        function removeFromList(elem) {
+
+        function removeFriend(elem, array) {
             const nodeName = elem.children[1].textContent;
-
-            friendsList2.innerHTML = '';
-
-            if(filterInput2.value !== '') {
-                for (let i = 0; i < friendsInListFiltered.length; i++) {
-                    const fullName = `${friendsInListFiltered[i].first_name} ${friendsInListFiltered[i].last_name}`;
-                    if (fullName === nodeName) {
-                        let index = friendsInList.indexOf(friendsInListFiltered[i]);
-                        friendsInList.splice(index, 1);
-                        friendsInListFiltered.splice(i, 1);
-
-                    }
+            for (let i = 0; i < array.length; i++) {
+                const fullName = `${array[i].first_name} ${array[i].last_name}`;
+                if (nodeName === fullName) {
+                    array.splice(i, 1);
                 }
-                renderFriends(friendsInListFiltered, friendsList2, true);
-            } else {
-                for (let i = 0; i < friendsInList.length; i++) {
-                    const fullName = `${friendsInList[i].first_name} ${friendsInList[i].last_name}`;
-                    if (fullName === nodeName) {
-                        friendsInList.splice(i, 1);
-
-                    }
-                }
-                renderFriends(friendsInList, friendsList2, true);
             }
         }
+
         function makeDND(zones) {
             let currentDrag;
 
@@ -161,15 +146,19 @@ import {
                 });
 
                 zone.addEventListener('drop', (e) => {
-                    if(currentDrag)  {
+                    if (currentDrag) {
                         e.preventDefault();
 
-                        if (currentDrag.source !== zone) {
-                            if (zone === zone2) {
-                                addToList(currentDrag.node);
-                            } else {
-                                removeFromList(currentDrag.node);
-                            }
+                        if (currentDrag.source === zone1) {
+                            addFriend(currentDrag.node, friends, friendsSelected);
+                            removeFriend(currentDrag.node, friends);
+                            renderFriends(friends, friendsList1);
+                            renderFriends(friendsSelected, friendsList2, true);
+                        } else {
+                            addFriend(currentDrag.node, friendsSelected, friends);
+                            removeFriend(currentDrag.node, friendsSelected);
+                            renderFriends(friendsSelected, friendsList2, true);
+                            renderFriends(friends, friendsList1);
                         }
                         currentDrag = null;
                     }
@@ -212,9 +201,12 @@ function createFriendNodeFiltered(friend) {
 }
 
 function renderFriends(friends, appendTo, isFiltered) {
+    friends.sort(compare);
+
     if (isEmpty(friends)) {
         appendTo.innerHTML = `<div class="noFriends">Нет друзей :'(</div>`
     } else {
+        appendTo.innerHTML = '';
         for (const friend of friends) {
             if (isFiltered) {
                 appendTo.innerHTML += createFriendNodeFiltered(friend);
@@ -225,3 +217,7 @@ function renderFriends(friends, appendTo, isFiltered) {
     }
 }
 
+function compare(a, b) {
+    if (a.first_name > b.first_name) return 1;
+    if (a.first_name < b.first_name) return -1;
+}
