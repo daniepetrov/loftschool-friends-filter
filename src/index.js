@@ -54,39 +54,71 @@ import {
 
 
         friendsList1.addEventListener('click', (e) => {
-            if (e.target.tagName === 'BUTTON') {
-                let elem = e.target.parentNode;
+                if (e.target.tagName === 'BUTTON') {
+                    let elem = e.target.parentNode;
 
-                if(filterInput1.value === '') {
-                    addFriend(elem, friends, friendsSelected);
-                    removeFriend(elem, friends);
-                    renderFriends(friends, friendsList1);
-                    renderFriends(friendsSelected, friendsList2, true);
-                } else {
-                    addFriend(elem, friends, friendsSelected);
-                    removeFriend(elem, friends);
-                    removeFriend(elem, friendsFiltered);
-                    renderFriends(friendsFiltered, friendsList1);
-                    renderFriends(friendsSelected, friendsList2, true);
+                    if (filterInput1.value === '' && filterInput2.value === '') {
+                        addFriend(elem, friends, friendsSelected);
+                        removeFriend(elem, friends);
+                        renderFriends(friends, friendsList1);
+                        renderFriends(friendsSelected, friendsList2, true);
+                    } else if (filterInput1.value !== '' && filterInput2.value === '') {
+                        addFriend(elem, friends, friendsSelected);
+                        removeFriend(elem, friends);
+                        removeFriend(elem, friendsFiltered);
+                        renderFriends(friendsFiltered, friendsList1);
+                        renderFriends(friendsSelected, friendsList2, true);
+
+                    } else if (filterInput1.value === '' && filterInput2.value !== '') {
+                        addFriend(elem, friends, friendsSelected);
+                        addFriend(elem, friends, friendsSelectedFiltered);
+                        removeFriend(elem, friends);
+                        renderFriends(friends, friendsList1);
+                        renderFriends(friendsSelectedFiltered, friendsList2, true);
+
+                    } else if (filterInput1.value !== '' && filterInput2.value !== '') {
+                        addFriend(elem, friends, friendsSelected);
+                        addFriend(elem, friends, friendsSelectedFiltered);
+                        removeFriend(elem, friends);
+                        removeFriend(elem, friendsFiltered);
+                        renderFriends(friendsFiltered, friendsList1);
+                        renderFriends(friendsSelectedFiltered, friendsList2, true);
+
+                    }
                 }
-
             }
-        });
+        );
 
         friendsList2.addEventListener('click', (e) => {
             if (e.target.tagName === 'BUTTON') {
                 let elem = e.target.parentNode;
-                if(filterInput2.value === '') {
+                if (filterInput1.value === '' && filterInput2.value === '') {
                     addFriend(elem, friendsSelected, friends);
                     removeFriend(elem, friendsSelected);
                     renderFriends(friendsSelected, friendsList2, true);
                     renderFriends(friends, friendsList1);
-                } else {
+                } else if (filterInput1.value !== '' && filterInput2.value === '') {
                     addFriend(elem, friendsSelected, friends);
+                    addFriend(elem, friendsSelected, friendsFiltered);
                     removeFriend(elem, friendsSelected);
+                    renderFriends(friendsSelected, friendsList2, true);
+                    renderFriends(friendsFiltered, friendsList1);
+
+                } else if (filterInput1.value === '' && filterInput2.value !== '') {
+                    addFriend(elem, friendsSelected, friends);
                     removeFriend(elem, friendsSelectedFiltered);
+                    removeFriend(elem, friendsSelected);
                     renderFriends(friendsSelectedFiltered, friendsList2, true);
                     renderFriends(friends, friendsList1);
+
+                } else if (filterInput1.value !== '' && filterInput2.value !== '') {
+                    addFriend(elem, friendsSelected, friends);
+                    addFriend(elem, friendsSelected, friendsFiltered);
+                    removeFriend(elem, friendsSelectedFiltered);
+                    removeFriend(elem, friendsSelected);
+                    renderFriends(friendsSelectedFiltered, friendsList2, true);
+                    renderFriends(friendsFiltered, friendsList1);
+
                 }
             }
         });
@@ -150,15 +182,64 @@ import {
                         e.preventDefault();
 
                         if (currentDrag.source === zone1) {
-                            addFriend(currentDrag.node, friends, friendsSelected);
-                            removeFriend(currentDrag.node, friends);
-                            renderFriends(friends, friendsList1);
-                            renderFriends(friendsSelected, friendsList2, true);
+
+                            if (filterInput1.value === '' && filterInput2.value === '') {
+                                addFriend(currentDrag.node, friends, friendsSelected);
+                                removeFriend(currentDrag.node, friends);
+                                renderFriends(friends, friendsList1);
+                                renderFriends(friendsSelected, friendsList2, true);
+                            } else if (filterInput1.value !== '' && filterInput2.value === '') {
+                                addFriend(currentDrag.node, friends, friendsSelected);
+                                removeFriend(currentDrag.node, friends);
+                                removeFriend(currentDrag.node, friendsFiltered);
+                                renderFriends(friendsFiltered, friendsList1);
+                                renderFriends(friendsSelected, friendsList2, true);
+
+                            } else if (filterInput1.value === '' && filterInput2.value !== '') {
+                                addFriend(currentDrag.node, friends, friendsSelected);
+                                addFriend(currentDrag.node, friends, friendsSelectedFiltered);
+                                removeFriend(currentDrag.node, friends);
+                                renderFriends(friends, friendsList1);
+                                renderFriends(friendsSelectedFiltered, friendsList2, true);
+
+                            } else if (filterInput1.value !== '' && filterInput2.value !== '') {
+                                addFriend(currentDrag.node, friends, friendsSelected);
+                                addFriend(currentDrag.node, friends, friendsSelectedFiltered);
+                                removeFriend(currentDrag.node, friends);
+                                removeFriend(currentDrag.node, friendsFiltered);
+                                renderFriends(friendsFiltered, friendsList1);
+                                renderFriends(friendsSelectedFiltered, friendsList2, true);
+
+                            }
                         } else {
-                            addFriend(currentDrag.node, friendsSelected, friends);
-                            removeFriend(currentDrag.node, friendsSelected);
-                            renderFriends(friendsSelected, friendsList2, true);
-                            renderFriends(friends, friendsList1);
+                            if (filterInput1.value === '' && filterInput2.value === '') {
+                                addFriend(currentDrag.node, friendsSelected, friends);
+                                removeFriend(currentDrag.node, friendsSelected);
+                                renderFriends(friendsSelected, friendsList2, true);
+                                renderFriends(friends, friendsList1);
+                            } else if (filterInput1.value !== '' && filterInput2.value === '') {
+                                addFriend(currentDrag.node, friendsSelected, friends);
+                                addFriend(currentDrag.node, friendsSelected, friendsFiltered);
+                                removeFriend(currentDrag.node, friendsSelected);
+                                renderFriends(friendsSelected, friendsList2, true);
+                                renderFriends(friendsFiltered, friendsList1);
+
+                            } else if (filterInput1.value === '' && filterInput2.value !== '') {
+                                addFriend(currentDrag.node, friendsSelected, friends);
+                                removeFriend(currentDrag.node, friendsSelectedFiltered);
+                                removeFriend(currentDrag.node, friendsSelected);
+                                renderFriends(friendsSelectedFiltered, friendsList2, true);
+                                renderFriends(friends, friendsList1);
+
+                            } else if (filterInput1.value !== '' && filterInput2.value !== '') {
+                                addFriend(currentDrag.node, friendsSelected, friends);
+                                addFriend(currentDrag.node, friendsSelected, friendsFiltered);
+                                removeFriend(currentDrag.node, friendsSelectedFiltered);
+                                removeFriend(currentDrag.node, friendsSelected);
+                                renderFriends(friendsSelectedFiltered, friendsList2, true);
+                                renderFriends(friendsFiltered, friendsList1);
+
+                            }
                         }
                         currentDrag = null;
                     }
